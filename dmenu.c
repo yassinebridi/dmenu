@@ -395,6 +395,10 @@ keypress(XKeyEvent *ev)
 		case XK_l: ksym = XK_Next;  break;
 		case XK_h: ksym = XK_Prior; break;
 		case XK_j: ksym = XK_Down;  break;
+		case XK_v:
+			XConvertSelection(dpy, (ev->state) ? clip : XA_PRIMARY,
+			                  utf8, utf8, win, CurrentTime);
+			return;
 		default:
 			return;
 		}
